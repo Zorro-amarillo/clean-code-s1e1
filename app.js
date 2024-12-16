@@ -20,7 +20,7 @@ var createNewTaskElement=function(taskString){
     taskId += 1;
 
     var listItem=document.createElement("li");
-    listItem.classList.add('tasks-item');
+    listItem.classList.add('tasks-list__item');
 
     //input (checkbox)
     var checkBox=document.createElement("input");//checkbx
@@ -41,7 +41,7 @@ var createNewTaskElement=function(taskString){
 
     //Each elements, needs appending
     checkBox.type="checkbox";
-    checkBox.classList.add('task-checkbox');
+    checkBox.classList.add('checkbox');
     editInput.type="text";
     editInput.className="task task-input";
     editInput.id = `new-task-${taskId}`;
@@ -93,7 +93,7 @@ var editTask=function(){
     var editInput=listItem.querySelector('input[type=text]');
     var label=listItem.querySelector("label");
     var editBtn=listItem.querySelector(".edit-btn");
-    var containsClass=listItem.classList.contains("edited-task");
+    var containsClass=listItem.classList.contains("tasks-list__item_edited");
     //If class of the parent is .edited-task
     if(containsClass){
 
@@ -107,7 +107,7 @@ var editTask=function(){
     }
 
     //toggle .edited-task on the parent.
-    listItem.classList.toggle("edited-task");
+    listItem.classList.toggle("tasks-list__item_edited");
 };
 
 
