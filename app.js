@@ -13,9 +13,11 @@ var addButton=document.getElementsByTagName("button")[0];//first button
 var incompleteTaskHolder=document.getElementById("incomplete-tasks");//ul of #incomplete-tasks
 var completedTasksHolder=document.getElementById("completed-tasks");//completed-tasks
 
+let taskId = 3;
 
 //New task list item
 var createNewTaskElement=function(taskString){
+    taskId += 1;
 
     var listItem=document.createElement("li");
     listItem.classList.add('tasks-item');
@@ -35,12 +37,14 @@ var createNewTaskElement=function(taskString){
 
     label.innerText=taskString;
     label.className='task';
+    label.setAttribute('for', `new-task-${taskId}`);
 
     //Each elements, needs appending
     checkBox.type="checkbox";
     checkBox.classList.add('task-checkbox');
     editInput.type="text";
     editInput.className="task task-input";
+    editInput.id = `new-task-${taskId}`;
 
     editButton.innerText="Edit"; //innerText encodes special characters, HTML does not.
     editButton.className="btn edit-btn";
@@ -197,3 +201,6 @@ for (var i=0; i<completedTasksHolder.children.length;i++){
 //prevent creation of empty tasks.
 
 //Change edit to save when you are in edit mode.
+
+// Associate labels with text inputs
+
